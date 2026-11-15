@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ActorAvatar } from "@/components/ActorAvatar";
 import { CoupangCard } from "@/components/CoupangCard";
 import { actorBySlug } from "@/data/actors";
 import { eraById } from "@/data/eras";
@@ -66,11 +67,11 @@ export default async function FilmPage({ params }: { params: Promise<{ slug: str
           <dt className="text-muted">감독</dt><dd>{film.director}</dd>
           <dt className="text-muted">제작·배급</dt><dd>{film.studio}</dd>
           <dt className="text-muted">타잔</dt>
-          <dd><Link href={`/actors/${tarzan.slug}`} className="text-gold underline decoration-line">{tarzan.nameKo}</Link> <span className="text-muted">({tarzan.nameEn})</span></dd>
+          <dd className="flex items-center gap-3"><ActorAvatar slug={tarzan.slug} name={tarzan.nameKo} size={40} /><span><Link href={`/actors/${tarzan.slug}`} className="text-gold underline decoration-line">{tarzan.nameKo}</Link> <span className="text-muted">({tarzan.nameEn})</span></span></dd>
           <dt className="text-muted">제인</dt>
           <dd>
             {jane ? (
-              <><Link href={`/actors/${jane.slug}`} className="text-gold underline decoration-line">{jane.nameKo}</Link> <span className="text-muted">({jane.nameEn})</span></>
+              <span className="flex items-center gap-3"><ActorAvatar slug={jane.slug} name={jane.nameKo} size={40} /><span><Link href={`/actors/${jane.slug}`} className="text-gold underline decoration-line">{jane.nameKo}</Link> <span className="text-muted">({jane.nameEn})</span></span></span>
             ) : "—"}
             {film.janeNote && <span className="block text-xs text-muted">{film.janeNote}</span>}
           </dd>

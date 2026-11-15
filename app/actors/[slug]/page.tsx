@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ActorAvatar, PhotoCredit } from "@/components/ActorAvatar";
 import { actorBySlug, actors } from "@/data/actors";
 import { eraById } from "@/data/eras";
 import { films } from "@/data/films";
@@ -38,9 +39,15 @@ export default async function ActorPage({ params }: { params: Promise<{ slug: st
       <nav className="text-xs text-muted">
         <Link href="/" className="hover:text-gold">홈</Link> / <Link href="/actors" className="hover:text-gold">배우</Link>
       </nav>
-      <p className="mt-6 text-xs text-leaf">{ROLE_LABEL[actor.role]} 배우</p>
-      <h1 className="mt-1 font-serif text-3xl text-gold">{actor.nameKo}</h1>
-      <p className="text-muted">{actor.nameEn} · {actor.life}</p>
+      <div className="mt-6 flex flex-wrap items-center gap-6">
+        <ActorAvatar slug={actor.slug} name={actor.nameKo} size={140} />
+        <div>
+          <p className="text-xs text-leaf">{ROLE_LABEL[actor.role]} 배우</p>
+          <h1 className="mt-1 font-serif text-3xl text-gold">{actor.nameKo}</h1>
+          <p className="text-muted">{actor.nameEn} · {actor.life}</p>
+        </div>
+      </div>
+      <div className="mt-3"><PhotoCredit slug={actor.slug} /></div>
       <p className="mt-6 leading-8">{actor.bio}</p>
 
       <h2 className="mt-10 font-serif text-xl">출연한 타잔 영화</h2>

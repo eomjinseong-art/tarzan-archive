@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ActorAvatar } from "@/components/ActorAvatar";
 import { actors, type Actor } from "@/data/actors";
 import { films } from "@/data/films";
 import { pageMetadata } from "@/lib/seo";
@@ -21,12 +22,15 @@ function ActorGrid({ list }: { list: Actor[] }) {
       {list.map((actor) => {
         const fs = filmsOf(actor);
         return (
-          <Link key={actor.slug} href={`/actors/${actor.slug}`} className="rounded-lg border border-line bg-card p-4 hover:border-gold/70">
+          <Link key={actor.slug} href={`/actors/${actor.slug}`} className="flex gap-4 rounded-lg border border-line bg-card p-4 hover:border-gold/70">
+            <ActorAvatar slug={actor.slug} name={actor.nameKo} size={64} />
+            <span className="min-w-0">
             <p className="font-semibold">{actor.nameKo}</p>
             <p className="text-xs text-muted">{actor.nameEn} · {actor.life}</p>
             <p className="mt-2 text-xs leading-5 text-muted">
               {fs.length > 0 ? `${fs.length}편 · ${fs.map((f) => f.year).filter((y, i, a) => a.indexOf(y) === i).join(", ")}` : actor.extra?.join(", ")}
             </p>
+            </span>
           </Link>
         );
       })}

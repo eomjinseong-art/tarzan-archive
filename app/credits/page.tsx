@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { actorBySlug, actors } from "@/data/actors";
+import { actorPhotos } from "@/data/actorPhotos";
 import { films } from "@/data/films";
 import { images } from "@/data/images";
 import { pageMetadata } from "@/lib/seo";
@@ -47,6 +49,23 @@ export default function CreditsPage() {
             );
           })}
         </ul>
+      </section>
+
+      <section className="mt-10">
+        <h2 className="font-serif text-xl">배우 사진</h2>
+        <p className="mt-3 text-sm leading-7 text-muted">위키미디어 공용에서 퍼블릭 도메인, CC0, CC BY, CC BY-SA로 공개된 사진만 실었습니다. CC BY·CC BY-SA 사진은 저작자와 라이선스를 함께 적습니다. 2026년 11월 15일 각 파일 페이지의 라이선스를 확인했습니다.</p>
+        <ul className="mt-4 divide-y divide-line rounded-lg border border-line bg-card text-sm">
+          {actorPhotos.map((photo) => (
+            <li key={photo.slug} className="px-4 py-3">
+              <a href={photo.page} target="_blank" rel="noopener noreferrer" className="underline">{photo.file}</a>
+              <span className="block text-xs text-muted">{actorBySlug(photo.slug)?.nameKo} · {photo.author} · {photo.license}{photo.note ? ` · ${photo.note}` : ""}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 text-sm text-muted">
+          자유 이용 사진을 찾지 못해 자리표시를 둔 배우:{" "}
+          {actors.filter((a) => !actorPhotos.some((p) => p.slug === a.slug)).map((a) => a.nameKo).join(", ")}
+        </p>
       </section>
     </div>
   );
