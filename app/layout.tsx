@@ -1,0 +1,32 @@
+import { Noto_Sans_KR, Noto_Serif_KR } from "next/font/google";
+import type { Metadata } from "next";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { SITE_NAME, SITE_SUB, SITE_TAGLINE, SITE_URL } from "@/lib/site";
+import "./globals.css";
+
+const sans = Noto_Sans_KR({ subsets: ["latin"], variable: "--font-noto-sans", weight: ["400", "500", "700"] });
+const serif = Noto_Serif_KR({ subsets: ["latin"], variable: "--font-noto-serif", weight: ["400", "600", "700"] });
+
+const description = `${SITE_TAGLINE}. ${SITE_SUB}`;
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_NAME, template: `%s · ${SITE_NAME}` },
+  description,
+  keywords: ["타잔", "타잔 영화", "타잔 배우", "제인", "조니 와이즈뮬러", "레전드 오브 타잔", "디즈니 타잔", "그레이스톡", "Tarzan"],
+  openGraph: { type: "website", locale: "ko_KR", url: SITE_URL, siteName: SITE_NAME, title: SITE_NAME, description, images: ["/opengraph-image"] },
+  twitter: { card: "summary_large_image", title: SITE_NAME, description, images: ["/opengraph-image"] },
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="ko">
+      <body className={`${sans.variable} ${serif.variable} min-h-screen bg-bg font-sans text-paper antialiased`}>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
