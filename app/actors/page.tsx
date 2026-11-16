@@ -3,6 +3,7 @@ import { ActorAvatar } from "@/components/ActorAvatar";
 import { actors, type Actor } from "@/data/actors";
 import { films } from "@/data/films";
 import { pageMetadata } from "@/lib/seo";
+import { CoupangCard } from "@/components/CoupangCard";
 
 export const metadata = pageMetadata({
   title: "역대 타잔·제인 배우",
@@ -49,6 +50,7 @@ export default function ActorsPage() {
         <h2 className="font-serif text-2xl">타잔</h2>
         <ActorGrid list={actors.filter((a) => a.role === "tarzan")} />
       </section>
+      <CoupangCard />
       <section className="mt-12">
         <h2 className="font-serif text-2xl">제인</h2>
         <ActorGrid list={actors.filter((a) => a.role === "jane")} />

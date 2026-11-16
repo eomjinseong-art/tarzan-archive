@@ -2,6 +2,8 @@ import { FilmCard } from "@/components/FilmCard";
 import { eras } from "@/data/eras";
 import { films, filmsByEra } from "@/data/films";
 import { pageMetadata } from "@/lib/seo";
+import { Fragment } from "react";
+import { CoupangCard } from "@/components/CoupangCard";
 
 export const metadata = pageMetadata({
   title: "타잔 영화 전체 목록",
@@ -16,13 +18,16 @@ export default function FilmsPage() {
       <p className="mt-3 max-w-3xl text-sm leading-7 text-muted">
         극장 장편, 연속극(시리얼), 애니메이션, TV 에피소드를 묶은 극장판까지 {films.length}편입니다. 출처가 확인되지 않은 작품과 비공인 작품은 넣지 않았습니다.
       </p>
-      {eras.map((era) => (
-        <section key={era.id} className="mt-10" id={era.id}>
+      {eras.map((era, index) => (
+        <Fragment key={era.id}>
+        <section className="mt-10" id={era.id}>
           <h2 className="font-serif text-xl">{era.label} <span className="text-sm text-gold">{era.range}</span></h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {filmsByEra(era.id).map((film) => <FilmCard key={film.slug} film={film} />)}
           </div>
         </section>
+        {index === 0 ? <CoupangCard /> : null}
+        </Fragment>
       ))}
     </div>
   );
