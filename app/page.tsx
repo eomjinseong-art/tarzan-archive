@@ -6,6 +6,8 @@ import { films, filmsByEra } from "@/data/films";
 import { tvSeries } from "@/data/tv";
 import { pageMetadata } from "@/lib/seo";
 import { SITE_NAME, SITE_SUB, SITE_TAGLINE, SITE_URL } from "@/lib/site";
+import { Fragment } from "react";
+import { CoupangCard } from "@/components/CoupangCard";
 
 export const metadata = pageMetadata({ title: SITE_NAME, description: `${SITE_TAGLINE}. ${SITE_SUB}`, path: "/" });
 
@@ -41,10 +43,11 @@ export default function Home() {
         </div>
       </section>
 
-      {eras.map((era) => {
+      {eras.map((era, index) => {
         const list = filmsByEra(era.id);
         return (
-          <section key={era.id} className="border-t border-line py-10" id={era.id}>
+          <Fragment key={era.id}>
+          <section className="border-t border-line py-10" id={era.id}>
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h2 className="font-serif text-2xl text-paper">
                 {era.label} <span className="ml-2 text-base text-gold">{era.range}</span>
@@ -56,6 +59,8 @@ export default function Home() {
               {list.map((film) => <FilmCard key={film.slug} film={film} />)}
             </div>
           </section>
+          {index === 0 ? <CoupangCard /> : null}
+          </Fragment>
         );
       })}
     </div>
