@@ -1,3 +1,4 @@
+import { NadooAd } from "@/components/NadooAd";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ActorAvatar } from "@/components/ActorAvatar";
@@ -61,6 +62,7 @@ export default async function FilmPage({ params }: { params: Promise<{ slug: str
       <h1 className="mt-3 font-serif text-3xl leading-tight text-gold sm:text-4xl">{film.titleKo}</h1>
       <p className="mt-1 text-muted">{film.titleEn} · {film.year}</p>
 
+      <NadooAd inline />
       <div className="mt-8 grid gap-8 sm:grid-cols-[1fr_auto]">
         <dl className="grid grid-cols-[6rem_1fr] gap-x-4 gap-y-3 text-sm">
           <dt className="text-muted">개봉 연도</dt><dd>{film.year}년</dd>

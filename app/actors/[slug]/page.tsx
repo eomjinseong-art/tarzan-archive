@@ -1,3 +1,4 @@
+import { NadooAd } from "@/components/NadooAd";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ActorAvatar, PhotoCredit } from "@/components/ActorAvatar";
@@ -48,6 +49,7 @@ export default async function ActorPage({ params }: { params: Promise<{ slug: st
         </div>
       </div>
       <div className="mt-3"><PhotoCredit slug={actor.slug} /></div>
+      <NadooAd inline />
       <p className="mt-6 leading-8">{actor.bio}</p>
 
       <h2 className="mt-10 font-serif text-xl">출연한 타잔 영화</h2>

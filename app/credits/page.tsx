@@ -1,3 +1,4 @@
+import { NadooAd } from "@/components/NadooAd";
 import Link from "next/link";
 import { actorBySlug, actors } from "@/data/actors";
 import { actorPhotos } from "@/data/actorPhotos";
@@ -35,6 +36,7 @@ export default function CreditsPage() {
         </ul>
       </section>
 
+      <NadooAd inline />
       <section className="mt-10">
         <h2 className="font-serif text-xl">이미지</h2>
         <p className="mt-3 text-sm leading-7 text-muted">위키미디어 공용에서 퍼블릭 도메인으로 분류된 초기 홍보물만 실었습니다. 2026년 11월 15일 각 파일 페이지의 라이선스를 확인했습니다. 저작권이 남은 포스터와 영화 스틸은 쓰지 않습니다.</p>

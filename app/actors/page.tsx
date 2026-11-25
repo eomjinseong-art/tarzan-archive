@@ -1,3 +1,4 @@
+import { NadooAd } from "@/components/NadooAd";
 import Link from "next/link";
 import { ActorAvatar } from "@/components/ActorAvatar";
 import { actors, type Actor } from "@/data/actors";
@@ -51,6 +52,7 @@ export default function ActorsPage() {
         <ActorGrid list={actors.filter((a) => a.role === "tarzan")} />
       </section>
       <CoupangCard />
+      <NadooAd inline />
       <section className="mt-12">
         <h2 className="font-serif text-2xl">제인</h2>
         <ActorGrid list={actors.filter((a) => a.role === "jane")} />
