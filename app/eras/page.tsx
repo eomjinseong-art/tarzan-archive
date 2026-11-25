@@ -1,3 +1,4 @@
+import { NadooAd } from "@/components/NadooAd";
 import Link from "next/link";
 import { actorBySlug } from "@/data/actors";
 import { eras } from "@/data/eras";
@@ -17,6 +18,7 @@ export default function ErasPage() {
       <p className="mt-3 text-sm leading-7 text-muted">
         에드거 라이스 버로스의 소설 《유인원 타잔》(1912)에서 시작한 타잔은 1918년 첫 영화 이후 100년 가까이 스크린에 돌아왔습니다. 시대마다 타잔 배우와 제작 방식이 바뀌었습니다.
       </p>
+      <NadooAd inline />
       <ol className="mt-10 space-y-14 border-l border-line pl-6">
         {eras.map((era) => (
           <li key={era.id} id={era.id} className="relative scroll-mt-24">

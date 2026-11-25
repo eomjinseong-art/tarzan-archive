@@ -1,3 +1,4 @@
+import { NadooAd } from "@/components/NadooAd";
 import { tvSeries } from "@/data/tv";
 import { pageMetadata } from "@/lib/seo";
 
@@ -12,6 +13,7 @@ export default function TvPage() {
     <div className="mx-auto max-w-4xl px-4 py-10">
       <h1 className="font-serif text-3xl text-gold">TV 시리즈</h1>
       <p className="mt-3 text-sm leading-7 text-muted">1950년대 중반부터 옛 타잔 영화가 TV로 방영되면서, TV는 타잔을 대중에게 전하는 주요 무대가 됐습니다. 주요 시리즈와 TV 영화를 모았습니다.</p>
+      <NadooAd inline />
       <ul className="mt-8 space-y-4">
         {tvSeries.map((tv) => (
           <li key={tv.slug} id={tv.slug} className="rounded-lg border border-line bg-card p-5">
