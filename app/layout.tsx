@@ -14,7 +14,7 @@ const serif = Noto_Serif_KR({ subsets: ["latin"], variable: "--font-noto-serif",
 const description = `${SITE_TAGLINE}. ${SITE_SUB}`;
 
 export const metadata: Metadata = {
-  verification: { google: "LglMaYLzS6dacAPQ5ZgZdPgzdtfLbp_1Rk5vh3WNPlM" },
+  verification: { google: "LglMaYLzS6dacAPQ5ZgZdPgzdtfLbp_1Rk5vh3WNPlM", other: { "naver-site-verification": "47fa7bfb3df6780117bf024457dd2303712867ce" } },
   metadataBase: new URL(SITE_URL),
   title: { default: SITE_NAME, template: `%s · ${SITE_NAME}` },
   description,
